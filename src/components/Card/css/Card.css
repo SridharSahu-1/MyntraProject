@@ -1,0 +1,38 @@
+.name {
+  font-size: 16px;
+  font-weight: 700;
+  max-width: 220px;
+  line-height: 1;
+  color: #282c3f;
+  margin: 5px 0 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 8px;
+}
+.price {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 15px;
+  color: #282c3f;
+  white-space: nowrap;
+  font-weight: 700;
+}
+.strikePrice{
+  font-weight: 400;
+}
+.discount {
+  color: red;
+  font-weight: 400;
+}
+.description {
+  max-width: 220px;
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 8px;
+}
