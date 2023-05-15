@@ -28,7 +28,6 @@
     margin-right: 10px;
     margin-left: 10px;
 }
-
 .list{
     display: flex;
     align-items: center;
@@ -45,7 +44,6 @@
     text-transform: uppercase;
     cursor: pointer;
     text-decoration: none;
-    
 }
 .list-item:hover {
     border-bottom: var(--red-border-size) solid red;
@@ -89,6 +87,7 @@
     font-size: 22px;
 }
 .profile,.menu{
+    text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -97,6 +96,7 @@
     font-size: 12px;
     padding: 20px 0;
     cursor: pointer;
+
 }
 .profile:first-child:hover{
     border-bottom: var(--red-border-size) solid red;

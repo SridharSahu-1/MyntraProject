@@ -34,5 +34,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  padding: 0 8px;
+  padding: 5px 8px;
+}
+#del_btn{
+  background-color: red !important;
 }

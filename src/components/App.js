@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState ,useEffect } from "react";
 import { createBrowserRouter,RouterProvider } from "react-router-dom";
 import "../styles/App.css";
 import ProductModal from "./ProductModal/ProductModal";
@@ -6,7 +6,8 @@ import Home from "./Pages/HomePage/Home";
 import UnderConstruction from "./Pages/UnderConstruction/UnderConstruction";
 import Wrapper from "./Wrapper";
 import PageTemplate from "./Pages/PageTemplate";
-import Checkout from "./Pages/Checkout/Checkout";
+// import Checkout from "./Pages/Checkout/Checkout";
+import Cart from "../components/Cart/Cart";
 
 
 
@@ -40,19 +41,25 @@ let router = createBrowserRouter([
     element:<Wrapper><UnderConstruction/></Wrapper>
   },
   {
-    path:'/checkout',
-    element:<Checkout/>
+    path:'/cart',
+    element:<Cart />
   }
 
 ]);
 export const cartContext = createContext();
 export const dataContext = createContext();
 const App = () => {
-
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart"))||[]);
   const [data, setData] = useState([]);
+  const [filter, setFilter] = useState({
+    brand:"",
+    color:""
+  });
+  useEffect(()=>{
+    localStorage.setItem("cart",JSON.stringify(cart));
+  },[cart])
   return (
-    <dataContext.Provider value={{data, setData}}>
+    <dataContext.Provider value={{data, setData,filter,setFilter}}>
       <cartContext.Provider value={{cart,setCart}}>
       <RouterProvider router={router}/>
     </cartContext.Provider>

@@ -39,10 +39,10 @@ export default function Navbar() {
             <Link className="list-item" to={"/home&living"}>HOME & LIVING</Link>
             <Link className="list-item" to={"/beauty"}>BEAUTY</Link>
            
-            <li className="list-item">
+            <Link to={"/studio"} className="list-item">
               STUDIO
               <sup>NEW</sup>
-            </li>
+            </Link>
           </ul>
         </div>
 
@@ -57,22 +57,21 @@ export default function Navbar() {
           </div>
 
           <div className="NavIcons">
-            <a className="profile user">
+            <Link to={""} className="profile user">
               <AiOutlineUser className="profileIcons "/>
               <span>Profile</span>
-            </a>
-            <a className="profile">
+            </Link>
+            <Link to={""} className="profile">
               <AiOutlineHeart className="profileIcons"/>
               <span>Wishlist</span>
-            </a>
-            <a className="profile">
+            </Link>
+            <Link to={"/cart"} className="profile">
               <BiShoppingBag className="profileIcons"/>
               <span>Bag</span>
              { cart.length !==0 && <div className="cart-holder">
                 {cart.length === 0 ? "" : cart.length}
-          
           </div>}
-            </a>
+            </Link>
           </div>
         </div>
         <div className={showMenu?"sm":"sm-active"}>

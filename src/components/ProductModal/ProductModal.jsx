@@ -33,6 +33,7 @@ const ProductModal = () => {
     variant_compare_at_price,
     variant_price,
     product_details,
+    id:productId
   } = Data.length !== 0 ? Data[id] : {};
   const discount = Math.round((variant_price / variant_compare_at_price) * 100);
   return (
@@ -82,13 +83,14 @@ const ProductModal = () => {
               className="add__cart__btn"
               onClick={() => {
                 const payload = {
-                  name: brand,
-                  description: title,
-                  finalPrice: variant_price,
-                  strickPrice: variant_compare_at_price,
-                  discount: discount,
-                  otherImages: images,
-                  size: size,
+                  brand,
+                  title,
+                  variant_price,
+                  variant_compare_at_price,
+                  discount,
+                  images,
+                  size,
+                  id:productId
                 };
                 if (size === "") {
                   alert("Please select size");
@@ -104,6 +106,7 @@ const ProductModal = () => {
             <p>Pay on delivery might be available</p>
             <p>Easy 30 days returns and exchanges</p>
             <p>Try & Buy might be available</p>
+            <hr/>
             <h3 className="details__header">product details</h3>
             {product_details.split(",").map((el, id) => (
               <p key={id}>{el}</p>

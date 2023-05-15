@@ -1,6 +1,7 @@
-import React from "react";
+import React,{useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/Card.css";
+import {cartContext} from "../App"
 
 const Card = ({
   images,
@@ -9,13 +10,23 @@ const Card = ({
   variant_compare_at_price,
   brand,
   index,
-  product_for
+  product_for,
+  id,
+  deleteitem
 }) => {
   const navigate = useNavigate();
   const discount = Math.round(
     (variant_price / variant_compare_at_price) * 100
   );
+  let {cart,setCart} = useContext(cartContext);
+  function deleteByID(id){
+    let cartArray = [...cart]
+    let idx = cartArray.findIndex(obj=>obj.id ===id)
+      cartArray.splice(idx,1);
+      setCart(cartArray);
+  }
   return (
+    <>
     <div
       className="indiv-tile-holder"
       onClick={() => {
@@ -31,6 +42,8 @@ const Card = ({
           <span className="discount">({discount})%</span>
         </p>
     </div>
+      {deleteitem&& <button onClick={()=>{deleteByID(id)}}>delete</button>}
+    </>
   );
 };
 

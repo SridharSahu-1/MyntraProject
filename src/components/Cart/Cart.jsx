@@ -1,21 +1,33 @@
-import React from "react";
-import Card from "./Card";
+import React, {useContext} from "react";
+import Card from "../Card/Card";
+import { cartContext } from "../App";
+import EmptyCart from "../Pages/Checkout/EmptyCart";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 
-const Cart = ({ cartItems }) => {
+
+
+const Cart = () => {
+  let {cart:cartItems,setCart} = useContext(cartContext);
+  console.log(cartItems);
+  cartItems = cartItems||[];  
   let totalPrice = 0;
-  totalPrice = cartItems.map((e, i) => totalPrice + Number(e.finalPrice));
+  totalPrice = cartItems.length!==0 && cartItems.map((e) => totalPrice + Number(e.variant_price)) ;
   let discount = 0;
-  discount = cartItems.map((e, i) => discount + Number(e.discount));
+  discount =  cartItems.length!==0 && cartItems.map((e) => discount + Number(e.discount));
   let originalPrice = 0;
-  originalPrice = cartItems.map(
-    (e, i) => originalPrice + Number(e.strickPrice)
+  originalPrice = cartItems.length!==0 && cartItems.map(
+    (e) => originalPrice + Number(e.variant_compare_at_price)
+
   );
+
   return (
+    <>
+    <Navbar/>
+    {cartItems.length!==0 ?
     <div className="cartPage">
       <div className="cartItemsList">
-        {cartItems.length === 0
-          ? null
-          : cartItems.map((e, i) => <Card key={i} {...e} />)}
+        {cartItems?.map((e, i) => <Card key={i} {...e} deleteitem/>)}
       </div>
       <div className="calculation">
         <p>Total Items {cartItems.length}</p>
@@ -25,6 +37,10 @@ const Cart = ({ cartItems }) => {
         <button>Buy</button>
       </div>
     </div>
+    :
+    <EmptyCart/>}
+    <Footer/>
+    </>
   );
 };
 
