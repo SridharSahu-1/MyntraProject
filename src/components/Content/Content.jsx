@@ -3,7 +3,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import Card from "../Card/Card";
 import Filters from "../Filter/Filters";
-import Sort from "../Sort/Sort";
+// import Sort from "../Sort/Sort";
 import "./css/Content.css";
 
 const Content = ({ data, nextCall,hasMore,product_for }) => {
@@ -13,25 +13,25 @@ const Content = ({ data, nextCall,hasMore,product_for }) => {
     color: false,
     category: false,
   });
-  const [sort, setSort] = useState("What's New");
+  // const [sort, setSort] = useState("What's New");
 
-  useEffect(() => {
-    let sortedContent = content;
-    if (sort === "Price low to high") {
-      sortedContent = sortedContent.sort(
-        (a, b) => Number(a.finalPrice) - Number(b.finalPrice)
-      );
-      setContent(sortedContent);
-    } else if (sort === "Better Discount") {
-      sortedContent = sortedContent.sort(
-        (a, b) => Number(a.discount) - Number(b.discount)
-      );
-      setContent(sortedContent);
-    } else {
-      sortedContent = content;
-      setContent(sortedContent);
-    }
-  }, [sort]);
+  // useEffect(() => {
+  //   let sortedContent = content;
+  //   if (sort === "Price low to high") {
+  //     sortedContent = sortedContent.sort(
+  //       (a, b) => Number(a.finalPrice) - Number(b.finalPrice)
+  //     );
+  //     setContent(sortedContent);
+  //   } else if (sort === "Better Discount") {
+  //     sortedContent = sortedContent.sort(
+  //       (a, b) => Number(a.discount) - Number(b.discount)
+  //     );
+  //     setContent(sortedContent);
+  //   } else {
+  //     sortedContent = content;
+  //     setContent(sortedContent);
+  //   }
+  // }, [sort]);
 
   useEffect(() => {
     let filteredData = data;
@@ -45,9 +45,9 @@ const Content = ({ data, nextCall,hasMore,product_for }) => {
   }, [fliter]);
   return (
     <div className="content">
-      <div className="sortFilter">
+      {/* <div className="sortFilter">
         <Sort setSort={setSort} />
-      </div>
+      </div> */}
       <div className="mainDisplay">
         <div className="sideBar">
           <Filters setFilter={setFilter} fliter={fliter} />

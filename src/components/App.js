@@ -8,13 +8,24 @@ import Wrapper from "./Wrapper";
 import PageTemplate from "./Pages/PageTemplate";
 // import Checkout from "./Pages/Checkout/Checkout";
 import Cart from "../components/Cart/Cart";
-
-
+import { auth } from "../firebase";
+import Navbar from "./Navbar/Navbar";
+import Login from "./Login/Login";
+import Signup from './Signup/Signup'
+import Payment from "./Pages/Payment";
 
 let router = createBrowserRouter([
   {
     path: "/",
     element: <Wrapper><Home/></Wrapper>,
+  },
+  {
+    path: "/login",
+    element: <><Navbar/> <Login/></>,
+  },
+  {
+    path: "/signup",
+    element: <> <Navbar/> <Signup/> </>,
   },
   {
     path: "/mens",
@@ -43,6 +54,10 @@ let router = createBrowserRouter([
   {
     path:'/cart',
     element:<Cart />
+  },
+  {
+    path:'/payment',
+    element:<Payment/>
   }
 
 ]);
@@ -55,12 +70,27 @@ const App = () => {
     brand:"",
     color:""
   });
+  const [userName, setUserName] = useState("");
+
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        // console.log(user);
+        setUserName(user.displayName);
+      } else{ 
+      setUserName("");
+    }
+    });
+  }, []);
+
+
   useEffect(()=>{
     localStorage.setItem("cart",JSON.stringify(cart));
   },[cart])
   return (
     <dataContext.Provider value={{data, setData,filter,setFilter}}>
-      <cartContext.Provider value={{cart,setCart}}>
+      <cartContext.Provider value={{cart,setCart,userName}}>
       <RouterProvider router={router}/>
     </cartContext.Provider>
     </dataContext.Provider>

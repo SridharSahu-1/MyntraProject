@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 import {
   getDatabase,
   ref,
@@ -21,7 +22,9 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth();
 const db = getDatabase(app);
+
 
 export async function getData(path = "/", idx = 0, filter = {}) {
   const { brand: b, color } = filter;
@@ -53,7 +56,7 @@ export async function getData(path = "/", idx = 0, filter = {}) {
           brand.toLowerCase().includes(b.toLowerCase()) && dominant_color.toLowerCase().includes(color.toLowerCase())
       )
       .slice(idx * limit, limit * (idx + 1));
-      console.log(data);
+      // console.log(data);
     return data;
   } catch (e) {
     console.log(e);
@@ -77,3 +80,4 @@ export async function searchItem(search){
     return (await get(query(dbref,orderByChild("body"),startAt(search) ,endAt(search+ "\uf8ff"),limitToFirst(20)))).val()
 }
 export default db;
+export { app, auth};

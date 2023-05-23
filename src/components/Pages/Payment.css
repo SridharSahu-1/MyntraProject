@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+  }
+
+  .left-div {
+    flex: 1;
+    padding: 20px;
+    background-color: #126978;
+  }
+
+  .address-div {
+    padding: 15px;
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    border: 1px solid #eaeaec;
+  }
+
+  .offers-div {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #eaeaec;
+  }
+  .discount_icon{
+    height: 10px;
+    overflow: hidden;
+  }
+
+
+  .image-div img {
+    width: 100%;
+    height: auto;
+  }
+
+  .right-div {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+  }
+
+  .box-div {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+
+  .button-div {
+    text-align: center;
+    margin-top: 20px;
+  }

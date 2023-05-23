@@ -2,7 +2,7 @@ import React from 'react'
 import Product from '../../ProductContainer/Product'
 import Footer from '../../Footer/Footer'
 import Carousel from '../../Carousel/Carousel'
-
+import { Link } from "react-router-dom";
 export default function Home() {
 
     const products =[
@@ -26,8 +26,11 @@ export default function Home() {
   return (
    <>
    <Carousel/>
-
-    { products.map((obj)=><Product key={obj.path} path={obj.path} text={obj.text}/>)}
+   <Link to="/mens" style={{textDecoration:"none"}}>
+    {  products.map((obj)=><Product key={obj.path} path={obj.path} text={obj.text}/>) }
+    
+    </Link>
+    
    </>
   )
 }

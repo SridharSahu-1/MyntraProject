@@ -2,22 +2,36 @@ import React,{useContext ,useState,useEffect} from "react";
 import {useLocation} from "react-router-dom"
 import logo from "../images/icon.jpeg"
 import "./css/Navbar.css";
-import { BiSearch } from "react-icons/bi";
+// import { BiSearch } from "react-icons/bi";
 import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
 import { BiShoppingBag } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import {RxCross2} from "react-icons/rx"
 import {FiUser} from "react-icons/fi"
-
+import { auth } from '../../firebase';
+import 'react-tooltip/dist/react-tooltip.css'
 import { Link } from "react-router-dom";
 import  {cartContext} from "../App"
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
+
+
 export default function Navbar() {
-  const {cart} = useContext(cartContext);
+  const {cart, userName} = useContext(cartContext);
   const [showMenu,setShowMenu] = useState(true)
   const path = useLocation().pathname
   useEffect(()=>{
     setShowMenu(true);
   },[path,setShowMenu])
+
+  function signOut() {
+    auth.signOut().then(() => {
+      alert("SignedOut Succesfully");
+    }).catch((error) => {
+      alert("Couldn't signout");
+    });
+  }
+
   return (
       <nav className="navbar">
         <div className="leftNavGroup">
@@ -47,24 +61,44 @@ export default function Navbar() {
         </div>
 
         <div className="rightNavGroup">
-          <div className="navSearch ">
+          {/* <div className="navSearch ">
           
             <BiSearch className="searchIcon" />
             <input
               type="text"
               placeholder="Search for products, brands and more"
             />
-          </div>
+          </div> */}
 
           <div className="NavIcons">
-            <Link to={""} className="profile user">
+            { userName ?
+            <div className="profile user" data-tooltip-id="my-tooltip">
               <AiOutlineUser className="profileIcons "/>
-              <span>Profile</span>
+               <span className="nameCap">{userName}</span> 
+              <Tooltip 
+               openOnClick={true}
+               id="my-tooltip" 
+               place="bottom"
+               variant="dark"
+               clickable={true}
+              >
+                <button className="SignoutBtn" onClick={signOut}>Signout</button>
+              </Tooltip>
+              
+            </div>
+              :
+              <Link to={"/login"} className="profile user" data-tooltip-id="my-tooltip">
+              <AiOutlineUser className="profileIcons "/>
+               <span className="nameCap">Login</span>               
             </Link>
+              }
+
             <Link to={""} className="profile">
               <AiOutlineHeart className="profileIcons"/>
               <span>Wishlist</span>
             </Link>
+
+
             <Link to={"/cart"} className="profile">
               <BiShoppingBag className="profileIcons"/>
               <span>Bag</span>

@@ -86,6 +86,11 @@
 .profileIcons{
     font-size: 22px;
 }
+
+.nameCap{
+    text-transform: capitalize;
+}
+
 .profile,.menu{
     text-decoration: none;
     display: flex;
