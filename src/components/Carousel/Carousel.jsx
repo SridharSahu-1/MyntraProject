@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./css/Carousel.css";
+import "./Carousel.css";
 import SimpleImageSlider from "react-simple-image-slider";
 const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);

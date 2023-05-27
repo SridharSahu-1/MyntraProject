@@ -45,7 +45,8 @@ export default function Navbar() {
           <ul className="list">
           <li className="user__container" >
             <p className="user__icon__box"><FiUser/></p>
-            <h4 className="user__name">Sridhar</h4>
+            <h4 className="user__name capital">{userName ? <span>{userName}</span> : 
+            <Link to={"/login"} style={{color:"white",textDecoration:"none"}}>Login</Link>}</h4>
           </li>
             <Link className="list-item" to={"/mens"}>MEN</Link>
             <Link className="list-item" to={"/women"}>WOMEN</Link>
@@ -57,6 +58,8 @@ export default function Navbar() {
               STUDIO
               <sup>NEW</sup>
             </Link>
+            {userName &&
+             <Link className="list-item signout" to={"/"} onClick={signOut}>SIGNOUT</Link>}
           </ul>
         </div>
 

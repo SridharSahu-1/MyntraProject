@@ -1,6 +1,6 @@
 import React,{useContext} from "react";
 import { useNavigate } from "react-router-dom";
-import "./css/Card.css";
+import "./Card.css";
 import {cartContext} from "../App"
 
 const Card = ({

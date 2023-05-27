@@ -1,38 +1,90 @@
-import React from "react";
-import "./Payment.css";
-import { CiDiscount1 } from "react-icons/ci";
+import React, { useState } from 'react';
+import './Payment.css';
 
-export default function Payment() {
+const PaymentPage = () => {
+  const [selectedOption, setSelectedOption] = useState('');
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
   return (
-      <div class="container">
-        <div class="left-div">
-          <div class="address-div">
-            <div>Deliver to: Name pincode</div>
-            <button>Change Address</button>
-          </div>
-          <div class="offers-div">
-            
-            <h2> <CiDiscount1 className="discount_icon"/> Available Offers</h2>
-            <p>
-              Get up to Rs 500 Cashback on CRED pay(Android Devices only) on a
-              min spend of Rs 1000. TCA
-            </p>
-          </div>
-          <div class="image-div">
-            <img src="image.jpg" alt="Product Image" />
-          </div>
+    <div className="payment-page">
+      <div className="payment-options">
+        <h2>Payment Options</h2>
+        <div className="payment-option">
+          <label>
+            <input
+              type="radio"
+              name="paymentOption"
+              value="card"
+              checked={selectedOption === 'card'}
+              onChange={handleOptionChange}
+            />
+            Card
+          </label>
         </div>
-        <div class="right-div">
-          <div class="box-div">
-            <h2>Box Heading</h2>
-            <p>Box Text</p>
-          </div>
-          <div class="button-div">
-            <h2>Button Heading</h2>
-            <button>Click Me</button>
-          </div>
+        <div className="payment-option">
+          <label>
+            <input
+              type="radio"
+              name="paymentOption"
+              value="cod"
+              checked={selectedOption === 'cod'}
+              onChange={handleOptionChange}
+            />
+            Cash on Delivery
+          </label>
         </div>
+        <div className="payment-option">
+          <label>
+            <input
+              type="radio"
+              name="paymentOption"
+              value="upi"
+              checked={selectedOption === 'upi'}
+              onChange={handleOptionChange}
+            />
+            UPI
+          </label>
+        </div>
+        {selectedOption && (
+        <div className="payment-details">
+          <h2>Payment Details</h2>
+          <label htmlFor="cardNumber">Card Number</label>
+          <input type="text" id="cardNumber" />
+
+          {selectedOption === 'card' && (
+            <>
+              <label htmlFor="expiryDate">Expiry Date</label>
+              <input type="text" id="expiryDate" />
+
+              <label htmlFor="cvv">CVV</label>
+              <input type="text" id="cvv" />
+
+              <label htmlFor="name">Cardholder's Name</label>
+              <input type="text" id="name" />
+            </>
+          )}
+
+          {selectedOption === 'upi' && (
+            <>
+              <label htmlFor="upiId">UPI ID</label>
+              <input type="text" id="upiId" />
+            </>
+          )}
+        </div>
+      )}
       </div>
-    
+      <div className="price-details">
+        <h2>Price Details</h2>
+        <p>Item Price: $10</p>
+        <p>Shipping Cost: $5</p>
+        <p>Total Price: $15</p>
+      </div>
+     
+    </div>
   );
-}
+};
+
+export default PaymentPage;

@@ -1,5 +1,5 @@
 import React,{useContext} from "react";
-import { dataContext } from "../App";
+import { dataContext } from "./App";
 
 const Filters = () => {
   const {filter,setFilter} = useContext(dataContext)

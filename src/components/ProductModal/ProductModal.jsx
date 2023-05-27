@@ -2,13 +2,12 @@ import React, { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getData } from "../../firebase";
 import { cartContext, dataContext } from "../App";
-import "./css/ProductModal.css";
+import "./ProductModal.css";
 
 const ProductModal = () => {
   const navigate = useNavigate();
   const [size, setSize] = useState("");
   const { index } = useParams();
-  
   let [product_for, idx] = index.split("-");
   const [id,setId] = useState(idx);
   const { cart, setCart } = useContext(cartContext);

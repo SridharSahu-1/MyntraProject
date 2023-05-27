@@ -28,6 +28,17 @@
     margin-right: 10px;
     margin-left: 10px;
 }
+
+.capital{
+    text-transform: capitalize;
+}
+.SignoutBtn{
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
 .list{
     display: flex;
     align-items: center;
@@ -218,10 +229,16 @@ a:hover{
     font-weight: 700;
     text-decoration: none;
 }
+.signout{
+    display: none;
+}
 
 @media screen and (max-width:1175px) {
     .navSearch{
         width: 100%;
+    }
+    .signout{
+        display: block;
     }
 }
 
