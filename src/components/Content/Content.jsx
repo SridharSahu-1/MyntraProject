@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-
 import Card from "../Card/Card";
 import Filters from "../Filters";
 import "./Content.css";
+import Loader from "../Common/Loader";
+
 
 const Content = ({ data, nextCall,hasMore,product_for }) => {
+  const [loading,setLoading] = useState(true);
   const [content, setContent] = useState(data);
   const [fliter, setFilter] = useState({
     gender: "M",
@@ -13,25 +15,24 @@ const Content = ({ data, nextCall,hasMore,product_for }) => {
     category: false,
   });
 
-
   useEffect(() => {
     let filteredData = data;
-    if (fliter.color) {
-      filteredData = filteredData.filter((ele) => ele.link.includes("white"));
-    }
-    if (fliter.category) {
-      filteredData = filteredData.filter((ele) => ele.folded === "Y");
-    }
     setContent(filteredData);
+    setLoading(false);
+    console.log("Hello");
   }, [fliter]);
+
+    
   return (
+    <div>
+      {loading ? <Loader/> :
     <div className="content">
     
       <div className="mainDisplay">
         <div className="sideBar">
           <Filters setFilter={setFilter} fliter={fliter} />
         </div>
-        <InfiniteScroll
+        <InfiniteScroll loader={<Loader/>}
           dataLength={data.length}
           className="product-tile-holder"
           next={nextCall}
@@ -42,6 +43,8 @@ const Content = ({ data, nextCall,hasMore,product_for }) => {
           ))}
         </InfiniteScroll>
       </div>
+    </div>
+}
     </div>
   );
 };

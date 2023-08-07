@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Carousel.css";
 import SimpleImageSlider from "react-simple-image-slider";
-const Carousel = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
 
+const Carousel = () => {
+  
   const images = [
     {
       id: 1,
@@ -43,33 +43,8 @@ const Carousel = () => {
     },
   ];
   
-  const handleSlideChange = (increment) => {
-    setActiveIndex((prev) => (prev + increment) % images.length);
-  };
-
-  useEffect(() => {
-    let value = setInterval(() => {
-      handleSlideChange(1);
-    }, 2000);
-    return () => {
-      clearInterval(value);
-    };
-  }, []);
-
   return (
     <div>
-      {/* <div className="carousel">
-          {images.map((imageUrl, index) => (
-            <div
-              key={index}
-              className={`carousel__slide ${index === activeIndex ? 'active' : ''}`}
-              style={{ backgroundImage: `url(${imageUrl.url})` }}
-            />
-          ))}
-          
-        </div>
-            <button onClick={() => handleSlideChange(-1)}>Prev</button>
-          <button onClick={() => handleSlideChange(1)}>Next</button>       */}
       <SimpleImageSlider
         width={"100%"}
         height={400}
@@ -78,8 +53,7 @@ const Carousel = () => {
         showNavs={true}
         autoPlay
         autoPlayDelay={3.0}
-        style={{marginTop:"35px"}}
-        
+        style={{marginTop:"35px"}}    
       />
     </div>
   );

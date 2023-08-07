@@ -4,7 +4,8 @@ import { cartContext } from "../App";
 import EmptyCart from "../Pages/Checkout/EmptyCart";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-
+import "./Cart.css";
+import { Link, Navigate } from "react-router-dom";
 
 
 const Cart = () => {
@@ -12,33 +13,41 @@ const Cart = () => {
   console.log(cartItems);
   cartItems = cartItems||[];  
   let totalPrice = 0;
-  totalPrice = cartItems.length!==0 && cartItems.map((e) => totalPrice + Number(e.variant_price)) ;
   let discount = 0;
-  discount =  cartItems.length!==0 && cartItems.map((e) => discount + Number(e.discount));
   let originalPrice = 0;
-  originalPrice = cartItems.length!==0 && cartItems.map(
-    (e) => originalPrice + Number(e.variant_compare_at_price)
-
-  );
+  
+  cartItems.forEach((item) => {
+    totalPrice += Number(item.variant_price);
+    discount += Number(item.discount);
+    originalPrice += Number(item.variant_compare_at_price);
+  });
 
   return (
     <>
     <Navbar/>
+    <div className="container">
     {cartItems.length!==0 ?
     <div className="cartPage">
       <div className="cartItemsList">
+      <h1 className="cartItems_heading">Items in Cart</h1>
         {cartItems?.map((e, i) => <Card key={i} {...e} deleteitem/>)}
       </div>
+     <div className="price_details">
+      <h1 className="price_heading">Price Details</h1>
       <div className="calculation">
-        <p>Total Items {cartItems.length}</p>
-        <p>Total Original Price{originalPrice}</p>
-        <p>Discount {discount}</p>
-        <p>Total Price {totalPrice}</p>
-        <button>Buy</button>
+        
+        <p>Total Items: {cartItems.length}</p>
+        <p>Total Original Price: { originalPrice}</p>
+        <p>Discount: {discount}</p>
+        <p>Total Price: {totalPrice}</p>
+        <button className="order_Btn" onClick={()=>{alert("Order has been Placed!");}}>Buy</button>
+      </div>
       </div>
     </div>
+    
     :
     <EmptyCart/>}
+    </div>
     <Footer/>
     </>
   );

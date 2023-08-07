@@ -6,18 +6,17 @@ import Home from "./Pages/HomePage/Home";
 import UnderConstruction from "./Pages/UnderConstruction/UnderConstruction";
 import Wrapper from "./Wrapper";
 import PageTemplate from "./Pages/PageTemplate";
-// import Checkout from "./Pages/Checkout/Checkout";
 import Cart from "../components/Cart/Cart";
 import { auth } from "../firebase";
 import Navbar from "./Navbar/Navbar";
 import Login from "./Login/Login";
 import Signup from './Signup/Signup'
-import Payment from "./Pages/Payment";
 
 let router = createBrowserRouter([
   {
     path: "/",
     element: <Wrapper><Home/></Wrapper>,
+    
   },
   {
     path: "/login",
@@ -55,10 +54,7 @@ let router = createBrowserRouter([
     path:'/cart',
     element:<Cart />
   },
-  {
-    path:'/payment',
-    element:<Payment/>
-  }
+  
 
 ]);
 export const cartContext = createContext();

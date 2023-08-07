@@ -2,7 +2,6 @@ import React,{useContext ,useState,useEffect} from "react";
 import {useLocation} from "react-router-dom"
 import logo from "../images/icon.jpeg"
 import "./css/Navbar.css";
-// import { BiSearch } from "react-icons/bi";
 import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
 import { BiShoppingBag } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -22,7 +21,7 @@ export default function Navbar() {
   const path = useLocation().pathname
   useEffect(()=>{
     setShowMenu(true);
-  },[path,setShowMenu])
+  },[path,setShowMenu,cart,userName])
 
   function signOut() {
     auth.signOut().then(() => {
@@ -64,14 +63,6 @@ export default function Navbar() {
         </div>
 
         <div className="rightNavGroup">
-          {/* <div className="navSearch ">
-          
-            <BiSearch className="searchIcon" />
-            <input
-              type="text"
-              placeholder="Search for products, brands and more"
-            />
-          </div> */}
 
           <div className="NavIcons">
             { userName ?

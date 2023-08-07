@@ -1,8 +1,8 @@
 import React from "react";
 import "./css/EmptyCart.css";
 import { Link } from "react-router-dom";
-import Navbar from "../../Navbar/Navbar";
-import Footer from "../../Footer/Footer";
+// import Navbar from "../../Navbar/Navbar";
+// import Footer from "../../Footer/Footer";
 const EmptyCart = () => {
   return (
     <>

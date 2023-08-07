@@ -1,6 +1,6 @@
 import React from 'react'
 import Product from '../../ProductContainer/Product'
-import Footer from '../../Footer/Footer'
+// import Footer from '../../Footer/Footer'
 import Carousel from '../../Carousel/Carousel'
 import { Link } from "react-router-dom";
 export default function Home() {

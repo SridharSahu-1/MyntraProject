@@ -13,7 +13,7 @@ function Footer() {
           <li><p>Home & Living</p></li>
           <li><p>Beauty</p></li>
           <li><p>Gift Cards</p></li>
-          <li><p>Muntra Insider</p></li>
+          <li><p>Myntra Insider</p></li>
         </ul>
       </div>
       <div className="footer-links">

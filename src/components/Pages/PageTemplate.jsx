@@ -16,6 +16,7 @@ export default function PageTemplate({ path }) {
     setPage(0);
     setHasMore(true);
   }, [path, setData, setHasMore]);
+  
   useEffect(() => {
     // console.log("Hello");
     getData(path, page, filter).then((res) => {
