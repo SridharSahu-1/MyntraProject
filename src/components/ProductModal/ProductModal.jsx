@@ -34,7 +34,10 @@ const ProductModal = () => {
     product_details,
     id:productId
   } = Data.length !== 0 ? Data[id] : {};
-  const discount = Math.round((variant_price / variant_compare_at_price) * 100);
+  
+  const discount = Math.round(((variant_compare_at_price - variant_price) / variant_compare_at_price) * 100);
+
+
   return (
     !!Data.length && (
       <div>
@@ -101,14 +104,14 @@ const ProductModal = () => {
               Add to Cart
             </button>
             <br />
-            <p>100% Original Products</p>
-            <p>Pay on delivery might be available</p>
-            <p>Easy 30 days returns and exchanges</p>
-            <p>Try & Buy might be available</p>
+            <span className="descrition_txt" >100% Original Products</span>
+            <span className="descrition_txt" >Pay on delivery might be available</span>
+            <span className="descrition_txt" >Easy 30 days returns and exchanges</span>
+            <span className="descrition_txt" >Try & Buy might be available</span>
             <hr/>
             <h3 className="details__header">product details</h3>
             {product_details.split(",").map((el, id) => (
-              <p key={id}>{el}</p>
+              <span className="descrition_txt" key={id}>{el}</span>
             ))}
           </div>
         </div>

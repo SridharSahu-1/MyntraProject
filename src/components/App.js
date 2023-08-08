@@ -2,6 +2,8 @@ import React, { createContext, useState ,useEffect } from "react";
 import { createBrowserRouter,RouterProvider } from "react-router-dom";
 import "../styles/App.css";
 import ProductModal from "./ProductModal/ProductModal";
+import OutOfStock from "./Pages/UnderConstruction/OutOfStock";
+import NoProducts from "./Pages/UnderConstruction/NoProducts";
 import Home from "./Pages/HomePage/Home";
 import UnderConstruction from "./Pages/UnderConstruction/UnderConstruction";
 import Wrapper from "./Wrapper";
@@ -44,7 +46,11 @@ let router = createBrowserRouter([
   },
   {
     path :"/beauty",
-    element: <Wrapper><UnderConstruction/></Wrapper> 
+    element: <Wrapper><OutOfStock/> </Wrapper> 
+  },
+  {
+    path :"/home&living",
+    element: <Wrapper><NoProducts/></Wrapper> 
   },
   {
     path:'*',

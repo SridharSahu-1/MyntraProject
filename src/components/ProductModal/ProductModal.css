@@ -10,6 +10,10 @@
   grid-template-columns: auto auto;
 }
 
+.descrition_txt{
+  font-weight: 500;
+}
+
 .size-option,.size-active {
   border: 1px solid black;
   border-radius: 50%;
@@ -46,7 +50,7 @@
   background-color: #FF3F6C;
 }
 .add__cart__btn:hover{
-  border-color: #FF3F6C;
+  background-color: #da5f7c;
 }
 .details {
   display: flex;

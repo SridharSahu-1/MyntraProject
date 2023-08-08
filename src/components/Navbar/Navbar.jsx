@@ -2,7 +2,7 @@ import React,{useContext ,useState,useEffect} from "react";
 import {useLocation} from "react-router-dom"
 import logo from "../images/icon.jpeg"
 import "./css/Navbar.css";
-import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
 import { BiShoppingBag } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import {RxCross2} from "react-icons/rx"
@@ -86,12 +86,6 @@ export default function Navbar() {
                <span className="nameCap">Login</span>               
             </Link>
               }
-
-            <Link to={""} className="profile">
-              <AiOutlineHeart className="profileIcons"/>
-              <span>Wishlist</span>
-            </Link>
-
 
             <Link to={"/cart"} className="profile">
               <BiShoppingBag className="profileIcons"/>

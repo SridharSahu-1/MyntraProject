@@ -17,8 +17,9 @@ const Cart = () => {
   let originalPrice = 0;
   
   cartItems.forEach((item) => {
+    console.log(item);
     totalPrice += Number(item.variant_price);
-    discount += Number(item.discount);
+    discount += Number(item.variant_compare_at_price - item.variant_price );
     originalPrice += Number(item.variant_compare_at_price);
   });
 
@@ -37,9 +38,9 @@ const Cart = () => {
       <div className="calculation">
         
         <p>Total Items: {cartItems.length}</p>
-        <p>Total Original Price: { originalPrice}</p>
-        <p>Discount: {discount}</p>
-        <p>Total Price: {totalPrice}</p>
+        <p>Total Original Price: Rs.{ originalPrice}/-</p>
+        <p>Discount: Rs.{discount}/-</p>
+        <p>Total Price: Rs.{totalPrice}/-</p>
         <button className="order_Btn" onClick={()=>{alert("Order has been Placed!");}}>Buy</button>
       </div>
       </div>

@@ -17,7 +17,9 @@ const Card = ({
   deleteitem,
 }) => {
   const navigate = useNavigate();
-  const discount = Math.round((variant_price / variant_compare_at_price) * 100);
+  const discount = Math.round(((variant_compare_at_price - variant_price) / variant_compare_at_price) * 100);
+
+  
 
   let { cart, setCart } = useContext(cartContext);
   function deleteByID(id) {
